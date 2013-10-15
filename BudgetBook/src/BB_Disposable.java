@@ -7,6 +7,10 @@ public class BB_Disposable
 	private String _name;
 	private ArrayList<BB_Receipt> _listOfPayments;
 
+	public void addReceipt(BB_Receipt rec)
+	{
+		listOfPayments().add(rec);
+	}
 	//Get Set Functions
 	public String name(){ return _name;}
 	public void name(String x){_name = x;}
