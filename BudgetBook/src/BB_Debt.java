@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Date;
-
+import java.util.*;
 public class BB_Debt
 {
 	private String _name;
@@ -13,6 +11,16 @@ public class BB_Debt
 	private double _interestPayment;
 	private ArrayList<BB_Item> _listOfPayments;
 
+	public BB_Debt()
+	{
+		name("default");
+		listOfPayments(new ArrayList<BB_Item>());
+		initialBalance(0);
+		currentBalance(0);
+		payment(0);
+		principalPayment(0);
+		interestPayment(0);
+	}
 	//Get Set Functions
 	public String name(){ return _name;}
 	public void name(String x){_name = x;}
@@ -29,9 +37,9 @@ public class BB_Debt
 	public double interestPayment(){ return _interestPayment;}
 	public void interestPayment(double x){_interestPayment = x;}
 
-	public void getPayments(Date begin, Date end)
+	public ArrayList<BB_Item> getPayments(Date begin, Date end)
 	{
-		
+		return null;
 	}
 	public void addPayment(BB_Item item)
 	{
@@ -61,4 +69,20 @@ public class BB_Debt
 			}
 		}
 	}
+	public boolean isCurrent()
+	{
+		Calendar currentDate = new GregorianCalendar();
+		Calendar paymentDate = new GregorianCalendar();
+		for(BB_Item payment : listOfPayments())
+		{
+			paymentDate.setTime(payment.date());
+			if(currentDate.get(Calendar.MONTH) == paymentDate.get(Calendar.MONTH) &&
+					currentDate.get(Calendar.YEAR) == paymentDate.get(Calendar.YEAR))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 }

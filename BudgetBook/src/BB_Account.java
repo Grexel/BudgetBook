@@ -6,7 +6,7 @@ public class BB_Account
 
 	private ArrayList<BB_Debt> _debts;
 	private ArrayList<BB_Utility> _utilities;
-	private ArrayList<BB_Disposable> _receipts;
+	private ArrayList<BB_Disposable> _spendingTabs;
 	private ArrayList<BB_Earning> _income;
 
 	private ArrayList<BB_Profile> _profiles;
@@ -18,7 +18,7 @@ public class BB_Account
 		nextItemNumber(0);
 		debts(new ArrayList<BB_Debt>());
 		utilities(new ArrayList<BB_Utility>());
-		receipts(new ArrayList<BB_Disposable>());
+		spendingTabs(new ArrayList<BB_Disposable>());
 		income(new ArrayList<BB_Earning>());
 
 		profiles(new ArrayList<BB_Profile>());
@@ -34,9 +34,9 @@ public class BB_Account
 	{
 		utilities().add(util);
 	}
-	public void addDisposable(BB_Disposable rec)
+	public void addDisposable(BB_Disposable tab)
 	{
-		receipts().add(rec);
+		spendingTabs().add(tab);
 	}
 	public void addEarning(BB_Earning earn)
 	{
@@ -50,6 +50,7 @@ public class BB_Account
 	{
 		categories().add(cat);
 	}
+	
 	//Add to functions
 	public void addDebtPayment(String debtName)
 	{
@@ -82,7 +83,7 @@ public class BB_Account
 	}
 	public void addDisposablePayment(String dispName, BB_Receipt rec)
 	{
-		for(BB_Disposable group : receipts())
+		for(BB_Disposable group : spendingTabs())
 		{
 			if(group.name().equals(dispName))
 			{
@@ -120,8 +121,8 @@ public class BB_Account
 	public void debts(ArrayList<BB_Debt> debts) {_debts = debts;}
 	public ArrayList<BB_Utility> utilities() {return _utilities;}
 	public void utilities(ArrayList<BB_Utility> utilities) {_utilities = utilities;}
-	public ArrayList<BB_Disposable> receipts() {return _receipts;}
-	public void receipts(ArrayList<BB_Disposable> receipts) {_receipts = receipts;}
+	public ArrayList<BB_Disposable> spendingTabs() {return _spendingTabs;}
+	public void spendingTabs(ArrayList<BB_Disposable> receipts) {_spendingTabs = receipts;}
 	public ArrayList<BB_Earning> income() {return _income;}
 	public void income(ArrayList<BB_Earning> income) {_income = income;}
 	public ArrayList<BB_Profile> profiles() {return _profiles;}
