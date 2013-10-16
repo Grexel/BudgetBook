@@ -58,10 +58,8 @@ public class BB_Account
 		{
 			if(debt.name().equals(debtName))
 			{
-				BB_Item debtPayment = new BB_Item(nextItemNumber(),debt.name() + "_Payment",
-						1,debt.payment(),new Date(),null,null);
-				debt.addPayment(debtPayment);
-				
+				debt.addPayment(
+						generatePayment(debt.name() + "_Payment",1,debt.payment()));
 			}
 			else
 			{
@@ -75,9 +73,8 @@ public class BB_Account
 		{
 			if(util.name().equals(utilName))
 			{
-				BB_Item utilPayment = new BB_Item(nextItemNumber(),util.name() + "_Payment",
-						1,cost,new Date(),null,null);
-				util.addPayment(utilPayment);
+				util.addPayment(
+						generatePayment(util.name() + "_Payment",1,cost));
 			}
 		}
 	}
@@ -101,15 +98,26 @@ public class BB_Account
 		{
 			if(earning.name().equals(incName))
 			{
-				BB_Item incomePayment = new BB_Item(nextItemNumber(),earning.name() + "_Payment",
-						1,amountEarned ,new Date(),null,null);
-				earning.addPayment(incomePayment);
+				earning.addPayment(
+						generatePayment(earning.name() + "_Payment",1,amountEarned));
 			}
 			else
 			{
 				//add error code
 			}
 		}
+	}
+	
+	public BB_Receipt generateReceipt(ArrayList<BB_Item> items, String name, double tax)
+	{
+		BB_Receipt receipt = new BB_Receipt(nextItemNumber(),name, new Date(), items,  tax);
+		return receipt;
+	}
+	public BB_Item generatePayment(String name, int numItems, double cost)
+	{
+		BB_Item payment = new BB_Item(nextItemNumber(), name,
+				numItems, cost, new Date(), null, null);
+		return payment;
 	}
 	
 	//Get and Set Functions

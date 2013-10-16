@@ -8,36 +8,38 @@ public class BB_ConsoleApplication {
 	public static void main(String[] args)
 	{
 		BB_ConsoleApplication mainProgram = new BB_ConsoleApplication();
+		mainProgram.run();
 	}
 	
 	public BB_ConsoleApplication()
 	{
-		boolean quit = false;
 		sc = new Scanner(System.in);
 		account = new BB_Account();
-
 		insertTestData();
-		
+	}
+	public void run()
+	{
+		boolean quit = false;
 		while(!quit)
 		{
-			showMenu();
-			int choice = getInput(1,10,sc);
+			showMainMenu();
+			int choice = getInput(1,12,sc);
 			switch(choice)
 			{
 				case 1:
-					viewBook();
+					viewMonthlyAccount();
 					break;
 				case 2:
-					//viewTransactions();
+					showAddSectionMenu();
 					break;
 				case 3:
-					//addTransaction(sc);
+					showAddPayMenu();
 					break;
 				case 4:
-					//addCategory(sc);
+					showEditSectionMenu();
 					break;
 				case 5:
-					//addSubCategory(sc);
+					showEditPayMenu();
 					break;
 				case 6:
 					//addItemToCategory(sc);
@@ -49,10 +51,13 @@ public class BB_ConsoleApplication {
 					//saveLedger();
 					break;
 				case 9:
-					//newLedger(sc);
+					quit = true;
 					break;
 				case 10:
-					quit = true;
+					//
+					break;
+				case 11:
+					//
 					break;
 				default:
 					break;
@@ -60,32 +65,60 @@ public class BB_ConsoleApplication {
 			System.out.println("\nPress Enter to continue");
 			sc.nextLine();
 		}
-
+		
 	}
-	public void showMenu()
+	
+	public void showMainMenu()
 	{
 		System.out.println("====================");
-		System.out.println("1: View Book");
-		System.out.println("2: View Transactions");
-		System.out.println("3: Add Transaction");
-		System.out.println("4: Add Category");
-		System.out.println("5: Add SubCategory");
-		System.out.println("6: Add Item to Category");
-		System.out.println("7: Load Ledger");
-		System.out.println("8: Save Ledger");
-		System.out.println("9: New Ledger");
-		System.out.println("10: Quit");
+		System.out.println("1: View Monthly Log        10: View Timespan");
+		System.out.println("2: Add D/U/I/S/P/C         11: Estimate Future Expenses");
+		System.out.println("3: Add Payment/Earning     ");
+		System.out.println("4: Edit D/U/I/S/P/C        ");
+		System.out.println("5: Edit Payment/Earning    ");
+		System.out.println("6: Save Account            ");
+		System.out.println("7: Load Account            ");
+		System.out.println("8: New Account             ");
+		System.out.println("9: Quit");
 		System.out.println("====================");
+		/*
+		 view month/timespan, whole or d/u/i/s, based on profile/category/name
+		 
+		 */
 	}
-	public void viewBook()
+	public void showAddSectionMenu()
+	{
+		
+	}	
+	public void showAddPayMenu()
+	{
+		
+	}	
+	public void showEditSectionMenu()
+	{
+		
+	}	
+	public void showEditPayMenu()
+	{
+		
+	}	
+	public void showViewTimespanMenu()
+	{
+		
+	}
+	
+	
+	
+	public void viewMonthlyAccount()
 	{
 		double monthlyPayments = 0;
 		double monthlyEarnings = 0;
 		
 		System.out.println("================");
 		System.out.println("Viewing Account.");
-		System.out.println("================\n");
 		System.out.println(new Date());
+		System.out.println("================\n");
+		System.out.println("Debts:");
 		for(BB_Debt debt : account.debts())
 		{
 			if(debt.isCurrent())
@@ -96,6 +129,7 @@ public class BB_ConsoleApplication {
 			else
 				System.out.println("  " + debt.name() + " " + debt.payment());
 		}
+		System.out.println("Utilities:");
 		for(BB_Utility utility : account.utilities())
 		{
 			if(utility.isCurrent())
@@ -107,16 +141,29 @@ public class BB_ConsoleApplication {
 			else
 				System.out.println("  " + utility.name() + " " + utility.averagePayment());
 		}
+		System.out.println("Income:");
+		for(BB_Earning income : account.income())
+		{
+			System.out.println(income.name() + ":");
+			for(BB_Item payment : income.getEarnings(new Date()))
+			{
+				System.out.println("  " + payment.name() + " " + payment.costPerEach());
+				monthlyEarnings += payment.costPerEach();
+			}
+		}
+		System.out.println("Disposable Income:");
 		for(BB_Disposable dispose : account.spendingTabs())
 		{
 			System.out.println(dispose.name() + ":");
 			for(BB_Receipt receipt : dispose.getReceipts(new Date()))
 			{
-				System.out.println("  " + receipt.name() + " " + receipt.total());
+				System.out.println("$ " + receipt.name() + " " + receipt.total());
 				monthlyPayments += receipt.total();
 			}
 		}
 		System.out.println("Monthly Payments = " + monthlyPayments);
+		System.out.println("Monthly Earnings = " + monthlyEarnings);
+		System.out.println("Monthly Balance  = " + (monthlyEarnings - monthlyPayments));
 	}
 
 	public int getInput(int min, int max, Scanner sc)
