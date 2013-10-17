@@ -9,6 +9,11 @@ public class BB_Utility
 	private String _name;
 	private ArrayList<BB_Item> _listOfPayments;
 
+	public BB_Utility()
+	{
+		name("Default");
+		listOfPayments(new ArrayList<BB_Item>());
+	}
 	//Get Set Functions
 	public String name(){ return _name;}
 	public void name(String x){_name = x;}

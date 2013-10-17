@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.*;
 
 public class BB_ConsoleApplication {
@@ -23,7 +22,7 @@ public class BB_ConsoleApplication {
 		while(!quit)
 		{
 			showMainMenu();
-			int choice = getInput(1,12,sc);
+			int choice = getInt(1,12,sc);
 			switch(choice)
 			{
 				case 1:
@@ -31,9 +30,11 @@ public class BB_ConsoleApplication {
 					break;
 				case 2:
 					showAddSectionMenu();
+					addSection();
 					break;
 				case 3:
 					showAddPayMenu();
+					addPay();
 					break;
 				case 4:
 					showEditSectionMenu();
@@ -88,12 +89,84 @@ public class BB_ConsoleApplication {
 	}
 	public void showAddSectionMenu()
 	{
-		
-	}	
+		System.out.println("====================");
+		System.out.println("Add Section");
+		System.out.println("====================");
+		System.out.println("1: Add Debt");
+		System.out.println("2: Add Utility");
+		System.out.println("3: Add Income");
+		System.out.println("4: Add Disposable Tab");
+		System.out.println("5: Add Profile");
+		System.out.println("6: Add Category");
+		System.out.println("7: Cancel");
+	}
+	public void addSection()
+	{
+		int choice = getInt(1,7,sc);
+		switch(choice)
+		{
+			case 1:
+				addDebtSection();
+				break;
+			case 2:
+				addUtilitySection();
+				break;
+			case 3:
+				addIncomeSection();
+				break;
+			case 4:
+				addDisposableTabSection();
+				break;
+			case 5:
+				addProfileSection();
+				break;
+			case 6:
+				addCategorySection();
+				break;
+			case 7:
+				//
+				break;
+			default:
+				break;
+		}
+	}
 	public void showAddPayMenu()
 	{
+		System.out.println("====================");
+		System.out.println("Add Pay Section");
+		System.out.println("====================");
+		System.out.println("1: Add Debt Payment");
+		System.out.println("2: Add Utility Payment");
+		System.out.println("3: Add Income Earning");
+		System.out.println("4: Add Disposable Receipt");
+		System.out.println("5: Cancel");
 		
-	}	
+	}
+	public void addPay()
+	{
+		int choice = getInt(1,5,sc);
+		switch(choice)
+		{
+			case 1:
+				addDebtPay();
+				break;
+			case 2:
+				addUtilityPay();
+				break;
+			case 3:
+				addIncomeEarning();
+				break;
+			case 4:
+				addDisposableReceipt();
+				break;
+			case 5:
+				//cancel
+				break;
+			default:
+				break;
+		}
+		
+	}
 	public void showEditSectionMenu()
 	{
 		
@@ -166,7 +239,183 @@ public class BB_ConsoleApplication {
 		System.out.println("Monthly Balance  = " + (monthlyEarnings - monthlyPayments));
 	}
 
-	public int getInput(int min, int max, Scanner sc)
+	//Add Sections
+	//Add Section menu functions
+	public void addDebtSection()
+	{
+		System.out.println("====================");
+		System.out.println("Add Debt Section");
+		System.out.println("====================");
+		String name = "";
+		double initialBalance = 0;
+		double payment = 0;
+		double principalPayment = 0;
+		double interestPayment = 0;
+		System.out.println("Enter the name of the debt.");
+		name = sc.nextLine();
+		System.out.println("Enter the initial balance.");
+		initialBalance = getDouble(sc);
+		System.out.println("Enter the payment amount.");
+		payment = getDouble(sc);
+		System.out.println("Enter the principal amount.");
+		principalPayment = getDouble(sc);
+		System.out.println("Enter the interest amount.");
+		interestPayment = getDouble(sc);
+		
+		BB_Debt debt = new BB_Debt();
+		debt.name(name);
+		debt.initialBalance(initialBalance);
+		debt.currentBalance(initialBalance);
+		debt.payment(payment);
+		debt.principalPayment(principalPayment);
+		debt.interestPayment(interestPayment);
+		account.addDebt(debt);
+	}
+	public void addUtilitySection()
+	{
+		System.out.println("====================");
+		System.out.println("Add Utility Section");
+		System.out.println("====================");
+		String name = "";
+		System.out.println("Enter the name of the Utility.");
+		name = sc.nextLine();
+		
+		BB_Utility util = new BB_Utility();
+		util.name(name);
+		account.addUtility(util);
+	}
+	public void addIncomeSection()
+	{
+		System.out.println("====================");
+		System.out.println("Add Income Section");
+		System.out.println("====================");
+		String name = "";
+		System.out.println("Enter the name of the Income.");
+		name = sc.nextLine();
+		
+		BB_Earning earn = new BB_Earning();
+		earn.name(name);
+		account.addEarning(earn);
+	}
+	public void addDisposableTabSection()
+	{
+		System.out.println("====================");
+		System.out.println("Add Disposable Section");
+		System.out.println("====================");
+		String name = "";
+		System.out.println("Enter the name of the Disposable Tab.");
+		name = sc.nextLine();
+		
+		BB_Disposable disp = new BB_Disposable();
+		disp.name(name);
+		account.addDisposable(disp);
+	}	
+	public void addProfileSection()
+	{
+		System.out.println("====================");
+		System.out.println("Add Profile Section");
+		System.out.println("====================");
+		String name = "";
+		System.out.println("Enter the name of the Profile.");
+		name = sc.nextLine();
+		
+		BB_Profile prof = new BB_Profile();
+		prof.name(name);
+		account.addProfile(prof);
+	}	
+	public void addCategorySection()
+	{
+		System.out.println("====================");
+		System.out.println("Add Category Section");
+		System.out.println("====================");
+		String name = "";
+		System.out.println("Enter the name of the Category.");
+		name = sc.nextLine();
+		
+		BB_Category cat = new BB_Category();
+		cat.name(name);
+		account.addCategory(cat);
+	}
+	
+	//Add Pay
+	//Add Section menu functions
+	public void addDebtPay()
+	{
+		System.out.println("====================");
+		System.out.println("Add Debt Payment");
+		System.out.println("====================");
+		System.out.println("====================");
+		System.out.println("Held Debts");
+		for(BB_Debt debt : account.debts())
+		{
+			System.out.println("  " + debt.name());
+		}
+		String name = "";
+		
+		System.out.println("Enter the name of the debt being paid.");
+		name = sc.nextLine();
+		
+		account.addDebtPayment(name);
+	}
+	public void addUtilityPay()
+	{
+		System.out.println("====================");
+		System.out.println("Add Utility Payment");
+		System.out.println("====================");
+		System.out.println("====================");
+		System.out.println("Held Utilities");
+		for(BB_Utility util : account.utilities())
+		{
+			System.out.println("  " + util.name());
+		}
+		String name = "";
+		double payment = 0;
+		System.out.println("Enter the name of the Utility.");
+		name = sc.nextLine();
+		System.out.println("Enter the amount paid.");
+		payment = this.getDouble(sc);
+		
+		account.addUtilityPayment(name, payment);
+	}
+	public void addIncomeEarning()
+	{
+		System.out.println("====================");
+		System.out.println("Add Income Earning");
+		System.out.println("====================");
+		System.out.println("====================");
+		System.out.println("Income Sections");
+		for(BB_Earning earn : account.income())
+		{
+			System.out.println("  " + earn.name());
+		}
+		String name = "";
+		double payment = 0;
+		System.out.println("Enter the name of the Income.");
+		name = sc.nextLine();
+		System.out.println("Enter the amount earned.");
+		payment = this.getDouble(sc);
+		
+		account.addIncomePayment(name, payment);
+	}
+	public void addDisposableReceipt()
+	{
+		System.out.println("====================");
+		System.out.println("Add Disposable Receipt");
+		System.out.println("====================");
+		System.out.println("====================");
+		System.out.println("Disposable Sections");
+		for(BB_Disposable disp : account.spendingTabs())
+		{
+			System.out.println("  " + disp.name());
+		}
+		String name = "";
+		System.out.println("Enter the name of the Disposable Tab.");
+		name = sc.nextLine();
+		
+		//insert items into the receipt
+	}	
+	
+	public int getInt(int min, int max, Scanner sc)
 	{
 		boolean inputCorrect = false;
 		int inputInt = 0;
@@ -181,6 +430,20 @@ public class BB_ConsoleApplication {
 		}
 		return inputInt;
 	}
+	public double getDouble(Scanner sc)
+	{
+		while(true)
+		{
+			if(sc.hasNextDouble())
+				return sc.nextDouble();
+			else
+			{
+				sc.nextLine();
+				System.out.println("Please enter a valid Double-type number.");
+			}
+		}
+	}
+	
 	public void insertTestData()
 	{
 		BB_Debt dbt = new BB_Debt();
