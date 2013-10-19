@@ -1,6 +1,7 @@
 import java.util.*;
 public class BB_Account
 {
+	private String _name;
 	private double _balance;
 	private int _nextItemNumber;
 
@@ -121,6 +122,8 @@ public class BB_Account
 	}
 	
 	//Get and Set Functions
+	public String name(){ return _name;}
+	public void name(String x){_name = x;}
 	public double balance() {return _balance;}
 	public void balance(double balance) {_balance = balance;}
 	public int nextItemNumber() {return _nextItemNumber++;}
