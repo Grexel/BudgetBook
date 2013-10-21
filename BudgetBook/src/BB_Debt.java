@@ -21,6 +21,26 @@ public class BB_Debt
 		principalPayment(0);
 		interestPayment(0);
 	}
+	public BB_Debt(String name)
+	{
+		name(name);
+		listOfPayments(new ArrayList<BB_Item>());
+		initialBalance(0);
+		currentBalance(0);
+		payment(0);
+		principalPayment(0);
+		interestPayment(0);
+	}
+	public BB_Debt(String name, double intBal, double curBal, double payment, double princePay, double intPay)
+	{
+		name(name);
+		listOfPayments(new ArrayList<BB_Item>());
+		initialBalance(intBal);
+		currentBalance(curBal);
+		payment(payment);
+		principalPayment(princePay);
+		interestPayment(intPay);
+	}
 	//Get Set Functions
 	public String name(){ return _name;}
 	public void name(String x){_name = x;}
@@ -37,9 +57,25 @@ public class BB_Debt
 	public double interestPayment(){ return _interestPayment;}
 	public void interestPayment(double x){_interestPayment = x;}
 
-	public ArrayList<BB_Item> getPayments(Date begin, Date end)
+	public ArrayList<BB_Item> getPayments(Date start, Date end)
 	{
-		return null;
+		ArrayList<BB_Item> receipts = new ArrayList<BB_Item>();
+		
+		Calendar startDate = new GregorianCalendar();
+		startDate.setTime(start);
+		Calendar endDate = new GregorianCalendar();
+		startDate.setTime(end);
+		Calendar paymentDate = new GregorianCalendar();
+		
+		for(BB_Item payment : listOfPayments())
+		{
+			paymentDate.setTime(payment.date());
+			if(startDate.before(paymentDate) && endDate.after(paymentDate))
+			{
+				receipts.add(payment);
+			}
+		}
+		return receipts;
 	}
 	public void addPayment(BB_Item item)
 	{

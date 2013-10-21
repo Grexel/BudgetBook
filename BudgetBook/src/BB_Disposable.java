@@ -14,6 +14,11 @@ public class BB_Disposable
 		name("Default");
 		listOfPayments(new ArrayList<BB_Receipt>());
 	}
+	public BB_Disposable(String name)
+	{
+		name(name);
+		listOfPayments(new ArrayList<BB_Receipt>());
+	}
 	//add to function
 	public ArrayList<BB_Receipt> getReceipts(Date month)
 	{

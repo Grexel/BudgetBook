@@ -205,13 +205,11 @@ public class BB_ConsoleApplication {
 		System.out.println("Utilities:");
 		for(BB_Utility utility : account.utilities())
 		{
-			if(utility.isCurrent())
+			for(BB_Item payment : utility.getPayment(new Date()))
 			{
-				System.out.println("$ " + utility.name() + " " + 
-					utility.getPayment(new Date()).costPerEach());
-				monthlyPayments += utility.getPayment(new Date()).costPerEach();
+				System.out.println("  " + payment.name() + " " + payment.costPerEach());
+				monthlyEarnings += payment.costPerEach();
 			}
-			else
 				System.out.println("  " + utility.name() + " " + utility.averagePayment());
 		}
 		System.out.println("Income:");

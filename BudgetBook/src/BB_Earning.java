@@ -14,6 +14,11 @@ public class BB_Earning
 		name("Default");
 		listOfPayments(new ArrayList<BB_Item>());
 	}
+	public BB_Earning(String name)
+	{
+		name(name);
+		listOfPayments(new ArrayList<BB_Item>());
+	}
 	//Get Set Functions
 	public String name(){ return _name;}
 	public void name(String x){_name = x;}

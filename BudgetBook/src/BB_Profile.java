@@ -8,6 +8,10 @@ public class BB_Profile {
 	{
 		name("Default");
 	}
+	public BB_Profile(String name)
+	{
+		name(name);
+	}
 	public String name(){ return _name;}
 	public void name(String x){_name = x;}
 }
