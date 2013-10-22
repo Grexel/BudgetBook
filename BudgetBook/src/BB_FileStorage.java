@@ -5,23 +5,33 @@ import java.text.*;
 
 public class BB_FileStorage {
 
-	public static String defaultDirectory = "AccountFiles" + File.pathSeparator;
+	public static String defaultDirectory = "AccountFiles" + File.separator;
 	public static SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 	public static BB_Account loadAccount(String accountName)
 	{
+		File dir = new File("AccountFiles");
+		if(!dir.exists())
+		{
+			dir.mkdir();
+		}
 		try (BufferedReader br = new BufferedReader(new FileReader(new File(defaultDirectory + accountName))))
 		{
 			BB_Account account = new BB_Account();
-		
+			
 			String sCurrentLine;
-			while ((sCurrentLine = br.readLine()) != null)
+			while (br.ready())
 			{
+				sCurrentLine = br.readLine();
+				//System.out.println(sCurrentLine);
 				String[] commands = sCurrentLine.split(":");
 				if(commands[0].equals("Name"))
 				{
 					account.name(commands[1]);
+					account.balance(Double.parseDouble(commands[2]));
+					account.nextItemNumber(Integer.parseInt(commands[3]));
+					account.nextReceiptNumber(Integer.parseInt(commands[4]));
 				}
-				if(commands[0].equals("Debt"))
+				else if(commands[0].equals("Debt"))
 				{
 					BB_Debt debt = new BB_Debt(commands[1],
 							Double.parseDouble(commands[2]),
@@ -33,32 +43,32 @@ public class BB_FileStorage {
 //public BB_Debt(String name, double intBal, double curBal, double payment, double princePay, double intPay)
 					
 				}
-				if(commands[0].equals("Utility"))
+				else if(commands[0].equals("Utility"))
 				{
 					BB_Utility util = new BB_Utility(commands[1]);
 					account.addUtility(util);
 				}
-				if(commands[0].equals("Income"))
+				else if(commands[0].equals("Income"))
 				{
 					BB_Earning util = new BB_Earning(commands[1]);
 					account.addEarning(util);
 				}
-				if(commands[0].equals("Disposable"))
+				else if(commands[0].equals("Disposable"))
 				{
 					BB_Disposable util = new BB_Disposable(commands[1]);
 					account.addDisposable(util);
 				}
-				if(commands[0].equals("Profile"))
+				else if(commands[0].equals("Profile"))
 				{
 					BB_Profile util = new BB_Profile(commands[1]);
 					account.addProfile(util);
 				}
-				if(commands[0].equals("Category"))
+				else if(commands[0].equals("Category"))
 				{
 					BB_Category util = new BB_Category(commands[1]);
 					account.addCategory(util);
 				}
-				if(commands[0].equals("DP"))
+				else if(commands[0].equals("DP"))
 				{
 					//Name of Debt
 					String debtName = commands[1];
@@ -73,7 +83,7 @@ public class BB_FileStorage {
 						}
 					}
 				}
-				if(commands[0].equals("UP"))
+				else if(commands[0].equals("UP"))
 				{
 					//Name of Debt
 					String utilName = commands[1];
@@ -88,7 +98,7 @@ public class BB_FileStorage {
 						}
 					}
 				}
-				if(commands[0].equals("IE"))
+				else if(commands[0].equals("IE"))
 				{
 					//Name of Debt
 					String utilName = commands[1];
@@ -103,7 +113,7 @@ public class BB_FileStorage {
 						}
 					}
 				}
-				if(commands[0].equals("DR"))
+				else if(commands[0].equals("DR"))
 				{
 					String dispName = commands[1];
 					int recNum = Integer.parseInt(commands[2]);
@@ -122,7 +132,7 @@ public class BB_FileStorage {
 					}
 					//public BB_Receipt(int num, String name, Date date, double tax)
 				}
-				if(commands[0].equals("DRI"))
+				else if(commands[0].equals("DRI"))
 				{
 					String dispName = commands[1];
 					int recNum = Integer.parseInt(commands[2]);
@@ -142,8 +152,9 @@ public class BB_FileStorage {
 					}
 					//public BB_Receipt(int num, String name, Date date, double tax)
 				}
-				return account;
 			}
+			br.close();
+			return account;
 		} catch (IOException e)
 		{
 			e.printStackTrace();
@@ -153,9 +164,17 @@ public class BB_FileStorage {
 
 	public static void saveAccount(BB_Account account)
 	{
+		File dir = new File("AccountFiles");
+		if(!dir.exists())
+		{
+			dir.mkdir();
+		}
 		try{
 			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(defaultDirectory + account.name())));
-			bw.write("Name:" + account.name()); bw.newLine();
+			bw.write("Name:" + account.name() + ":" +
+					account.balance() + ":" +
+					account.nextItemNumber() + ":" +
+					account.nextReceiptNumber()); bw.newLine();
 			for(BB_Debt debt : account.debts())
 			{
 				bw.write("Debt:" + debt.name() + ":" + debt.initialBalance() + ":" + debt.currentBalance()
@@ -195,7 +214,7 @@ public class BB_FileStorage {
 							+ p.name() + ":"
 							+ p.numberOfItems() + ":"
 							+ p.costPerEach() + ":"
-							+ dateFormat.format(p.date() + ":")
+							+ dateFormat.format(p.date()) + ":"
 							+ p.attributedTo().name() + ":"
 							+ p.category().name());
 					bw.newLine();
@@ -209,7 +228,7 @@ public class BB_FileStorage {
 							+ p.name() + ":"
 							+ p.numberOfItems() + ":"
 							+ p.costPerEach() + ":"
-							+ dateFormat.format(p.date() + ":")
+							+ dateFormat.format(p.date()) + ":"
 							+ p.attributedTo().name() + ":"
 							+ p.category().name());
 					bw.newLine();
@@ -223,7 +242,7 @@ public class BB_FileStorage {
 							+ p.name() + ":"
 							+ p.numberOfItems() + ":"
 							+ p.costPerEach() + ":"
-							+ dateFormat.format(p.date() + ":")
+							+ dateFormat.format(p.date()) + ":"
 							+ p.attributedTo().name() + ":"
 							+ p.category().name());
 					bw.newLine();
@@ -251,13 +270,15 @@ public class BB_FileStorage {
 								+ item.name() + ":"
 								+ item.numberOfItems() + ":"
 								+ item.costPerEach() + ":"
-								+ dateFormat.format(item.date() + ":")
+								+ dateFormat.format(item.date()) + ":"
 								+ item.attributedTo().name() + ":"
 								+ item.category().name());
 						bw.newLine();
 					}
 				}
 			}
+			bw.flush();
+			bw.close();
 		}catch(IOException e){e.printStackTrace();}
 		
 	}	

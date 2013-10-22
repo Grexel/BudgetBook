@@ -4,6 +4,7 @@ public class BB_Account
 	private String _name;
 	private double _balance;
 	private int _nextItemNumber;
+	private int _nextReceiptNumber;
 
 	private ArrayList<BB_Debt> _debts;
 	private ArrayList<BB_Utility> _utilities;
@@ -15,8 +16,26 @@ public class BB_Account
 
 	public BB_Account()
 	{
+		name("default");
 		balance(0);
 		nextItemNumber(0);
+		nextReceiptNumber(0);
+		debts(new ArrayList<BB_Debt>());
+		utilities(new ArrayList<BB_Utility>());
+		spendingTabs(new ArrayList<BB_Disposable>());
+		income(new ArrayList<BB_Earning>());
+
+		profiles(new ArrayList<BB_Profile>());
+		categories(new ArrayList<BB_Category>());
+		addProfile(new BB_Profile("Default"));
+		addCategory(new BB_Category("Default"));
+	}
+	public BB_Account(String name)
+	{
+		name(name);
+		balance(0);
+		nextItemNumber(0);
+		nextReceiptNumber(0);
 		debts(new ArrayList<BB_Debt>());
 		utilities(new ArrayList<BB_Utility>());
 		spendingTabs(new ArrayList<BB_Disposable>());
@@ -29,26 +48,56 @@ public class BB_Account
 	//Add functions
 	public void addDebt(BB_Debt dbt)
 	{
+		for(BB_Debt debt : debts())
+		{
+			if(debt.name().equals(dbt.name()))
+				return;
+		}
 		debts().add(dbt);
 	}
 	public void addUtility(BB_Utility util)
 	{
+		for(BB_Utility debt : utilities())
+		{
+			if(debt.name().equals(util.name()))
+				return;
+		}
 		utilities().add(util);
 	}
 	public void addDisposable(BB_Disposable tab)
 	{
+		for(BB_Disposable debt : spendingTabs())
+		{
+			if(debt.name().equals(tab.name()))
+				return;
+		}
 		spendingTabs().add(tab);
 	}
 	public void addEarning(BB_Earning earn)
 	{
+		for(BB_Earning debt : income())
+		{
+			if(debt.name().equals(earn.name()))
+				return;
+		}
 		income().add(earn);
 	}
 	public void addProfile(BB_Profile prof)
 	{
+		for(BB_Profile debt : profiles())
+		{
+			if(debt.name().equals(prof.name()))
+				return;
+		}
 		profiles().add(prof);
 	}
 	public void addCategory(BB_Category cat)
 	{
+		for(BB_Category debt : categories())
+		{
+			if(debt.name().equals(cat.name()))
+				return;
+		}
 		categories().add(cat);
 	}
 	
@@ -111,16 +160,95 @@ public class BB_Account
 	
 	public BB_Receipt generateReceipt(ArrayList<BB_Item> items, String name, double tax)
 	{
-		BB_Receipt receipt = new BB_Receipt(nextItemNumber(),name, new Date(), items,  tax);
+		BB_Receipt receipt = new BB_Receipt(nextReceiptNumber(),name, new Date(), items,  tax);
 		return receipt;
 	}
 	public BB_Item generatePayment(String name, int numItems, double cost)
 	{
 		BB_Item payment = new BB_Item(nextItemNumber(), name,
-				numItems, cost, new Date(), null, null);
+				numItems, cost, new Date(), getProfile("Default"), getCategory("Default"));
+		return payment;
+	}	
+	public BB_Item generatePayment(String name, int numItems, double cost, BB_Profile profile, BB_Category cat)
+	{
+		if(profile == null) profile = getProfile("Default");
+		if(cat == null) cat = getCategory("Default");
+		BB_Item payment = new BB_Item(nextItemNumber(), name,
+				numItems, cost, new Date(), profile, cat);
 		return payment;
 	}
 	
+	
+	
+	
+	public BB_Debt getDebt(String name)
+	{
+		for(BB_Debt prof : this.debts())
+		{
+			if(prof.name().equals(name))
+			{
+				return prof;
+			}
+		}
+		return null;
+	}	
+	public BB_Utility getUtility(String name)
+	{
+		for(BB_Utility prof : this.utilities())
+		{
+			if(prof.name().equals(name))
+			{
+				return prof;
+			}
+		}
+		return null;
+	}	
+	public BB_Disposable getDisposable(String name)
+	{
+		for(BB_Disposable prof : this.spendingTabs())
+		{
+			if(prof.name().equals(name))
+			{
+				return prof;
+			}
+		}
+		return null;
+	}	
+	public BB_Earning getIncome(String name)
+	{
+		for(BB_Earning prof : this.income())
+		{
+			if(prof.name().equals(name))
+			{
+				return prof;
+			}
+		}
+		return null;
+	}	
+	public BB_Profile getProfile(String name)
+	{
+		for(BB_Profile prof : this.profiles())
+		{
+			if(prof.name().equals(name))
+			{
+				System.out.println("Found Profile: " + prof.name());
+				return prof;
+			}
+		}
+		System.out.println("Did not find Profile: " + name);
+		return null;
+	}
+	public BB_Category getCategory(String name)
+	{
+		for(BB_Category prof : this.categories())
+		{
+			if(prof.name().equals(name))
+			{
+				return prof;
+			}
+		}
+		return null;
+	}
 	//Get and Set Functions
 	public String name(){ return _name;}
 	public void name(String x){_name = x;}
@@ -128,6 +256,8 @@ public class BB_Account
 	public void balance(double balance) {_balance = balance;}
 	public int nextItemNumber() {return _nextItemNumber++;}
 	public void nextItemNumber(int nextItemNumber) {_nextItemNumber = nextItemNumber;}
+	public int nextReceiptNumber() {return _nextReceiptNumber++;}
+	public void nextReceiptNumber(int nextReceiptNumber) {_nextReceiptNumber = nextReceiptNumber;}
 	public ArrayList<BB_Debt> debts() {return _debts;}
 	public void debts(ArrayList<BB_Debt> debts) {_debts = debts;}
 	public ArrayList<BB_Utility> utilities() {return _utilities;}

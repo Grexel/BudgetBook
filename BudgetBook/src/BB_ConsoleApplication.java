@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 
 public class BB_ConsoleApplication {
 
@@ -30,10 +31,11 @@ public class BB_ConsoleApplication {
 	
 	public void showMainMenu()
 	{
+		System.out.println("Account: " + account.name());
 		System.out.println("====================");
 		System.out.println("1: View Monthly Log        10: View Timespan");
 		System.out.println("2: Add D/U/I/S/P/C         11: Estimate Future Expenses");
-		System.out.println("3: Add Payment/Earning     ");
+		System.out.println("3: Add Payment/Earning     12: View Profiles and Categories");
 		System.out.println("4: Edit D/U/I/S/P/C        ");
 		System.out.println("5: Edit Payment/Earning    ");
 		System.out.println("6: Save Account            ");
@@ -48,7 +50,7 @@ public class BB_ConsoleApplication {
 	}
 	public void mainMenu()
 	{
-		int choice = getInt(1,12,sc);
+		int choice = getInt(1,12);
 		switch(choice)
 		{
 			case 1:
@@ -86,6 +88,10 @@ public class BB_ConsoleApplication {
 			case 11:
 				//
 				break;
+			case 12:
+				//
+				viewPandC();
+				break;
 			default:
 				break;
 		}
@@ -105,7 +111,7 @@ public class BB_ConsoleApplication {
 	}
 	public void addSection()
 	{
-		int choice = getInt(1,7,sc);
+		int choice = getInt(1,7);
 		switch(choice)
 		{
 			case 1:
@@ -147,7 +153,7 @@ public class BB_ConsoleApplication {
 	}
 	public void addPay()
 	{
-		int choice = getInt(1,5,sc);
+		int choice = getInt(1,5);
 		switch(choice)
 		{
 			case 1:
@@ -211,14 +217,14 @@ public class BB_ConsoleApplication {
 			for(BB_Item payment : utility.getPayment(new Date()))
 			{
 				System.out.println("  " + payment.name() + " " + payment.costPerEach());
-				monthlyEarnings += payment.costPerEach();
+				monthlyPayments += payment.costPerEach();
 			}
-				System.out.println("  " + utility.name() + " " + utility.averagePayment());
+				System.out.println("   average: " + utility.averagePayment());
 		}
 		System.out.println("Income:");
 		for(BB_Earning income : account.income())
 		{
-			System.out.println(income.name() + ":");
+			System.out.println("  " + income.name() + ":");
 			for(BB_Item payment : income.getEarnings(new Date()))
 			{
 				System.out.println("  " + payment.name() + " " + payment.costPerEach());
@@ -228,10 +234,10 @@ public class BB_ConsoleApplication {
 		System.out.println("Disposable Income:");
 		for(BB_Disposable dispose : account.spendingTabs())
 		{
-			System.out.println(dispose.name() + ":");
+			System.out.println("  " + dispose.name() + ":");
 			for(BB_Receipt receipt : dispose.getReceipts(new Date()))
 			{
-				System.out.println("$ " + receipt.name() + " " + receipt.total());
+				System.out.println(" $" + receipt.name() + " " + receipt.total());
 				monthlyPayments += receipt.total();
 			}
 		}
@@ -255,13 +261,13 @@ public class BB_ConsoleApplication {
 		System.out.println("Enter the name of the debt.");
 		name = sc.nextLine();
 		System.out.println("Enter the initial balance.");
-		initialBalance = getDouble(sc);
+		initialBalance = getDouble();
 		System.out.println("Enter the payment amount.");
-		payment = getDouble(sc);
+		payment = getDouble();
 		System.out.println("Enter the principal amount.");
-		principalPayment = getDouble(sc);
+		principalPayment = getDouble();
 		System.out.println("Enter the interest amount.");
-		interestPayment = getDouble(sc);
+		interestPayment = getDouble();
 		
 		BB_Debt debt = new BB_Debt();
 		debt.name(name);
@@ -374,7 +380,7 @@ public class BB_ConsoleApplication {
 		System.out.println("Enter the name of the Utility.");
 		name = sc.nextLine();
 		System.out.println("Enter the amount paid.");
-		payment = this.getDouble(sc);
+		payment = this.getDouble();
 		
 		account.addUtilityPayment(name, payment);
 	}
@@ -394,7 +400,7 @@ public class BB_ConsoleApplication {
 		System.out.println("Enter the name of the Income.");
 		name = sc.nextLine();
 		System.out.println("Enter the amount earned.");
-		payment = this.getDouble(sc);
+		payment = this.getDouble();
 		
 		account.addIncomePayment(name, payment);
 	}
@@ -409,26 +415,134 @@ public class BB_ConsoleApplication {
 		{
 			System.out.println("  " + disp.name());
 		}
-		String name = "";
+		String dispName = "";
+		String recName = "";
+		double recTax = 0;
+		ArrayList<BB_Item> receiptItems = new ArrayList<BB_Item>();
 		System.out.println("Enter the name of the Disposable Tab.");
-		name = sc.nextLine();
+		dispName = sc.nextLine();
+		System.out.println("Enter the name of the Receipt.");
+		recName = sc.nextLine();
+		System.out.println("Enter the receipt tax.");
+		recTax = getDouble();
 		
+		boolean addItems = true;
+		while(addItems)
+		{
+			inputItemForReceipt(receiptItems);
+			System.out.println("Add another item to receipt? (y/n)");
+			if(sc.nextLine().equals("n"))
+			{
+				addItems = false;
+			}
+		}
+		account.getDisposable(dispName).addReceipt(account.generateReceipt(receiptItems, recName, recTax));
 		//insert items into the receipt
 	}	
-	
+	public void inputItemForReceipt(ArrayList<BB_Item> items)
+	{
+		//public BB_Item(int iNum, String name, int numItems, double costEach,
+		//		Date date, BB_Profile attTo, BB_Category cat)
+		String itemName = "";
+		int numItems = 0;
+		double costEach = 0;
+		boolean addProfile = false;
+		String profName = "";
+		boolean addCategory = false;
+		String catName = "";
+		System.out.println("Enter the item name.");
+		itemName = sc.nextLine();
+		System.out.println("Enter the number of items.");
+		numItems = getInt();
+		System.out.println("Enter the item cost per each.");
+		costEach = getDouble();
+		System.out.println("Would you like to attach a profile to this item? (y/n)");
+		if(sc.nextLine().equals("y"))
+		{
+			addProfile = true;
+			System.out.println("Current Profiles");
+			for(BB_Profile prof : account.profiles())
+			{
+				System.out.println(prof.name());
+			}
+			System.out.println("Enter Profile name.");
+			profName = sc.nextLine();	
+		}
+		System.out.println("Would you like to attach a category to this item? (y/n)");
+		if(sc.nextLine().equals("y"))
+		{
+			addCategory = true;
+			System.out.println("Current Categories");
+			for(BB_Category prof : account.categories())
+			{
+				System.out.println(prof.name());
+			}
+			System.out.println("Enter Category name.");
+			catName = sc.nextLine();	
+		}
+		BB_Item i = account.generatePayment(itemName, numItems, costEach,
+				account.getProfile(profName), account.getCategory(catName));
+		System.out.println("Generated item : " + i.itemNumber() + " " + i.name() + " " + i.costPerEach());
+		items.add(i);
+
+	}
 	public void saveAccount()
 	{
-		
+		System.out.println("====================");
+		System.out.println("Saving Account");
+		System.out.println("====================");
+		BB_FileStorage.saveAccount(account);
+		System.out.println("Account Saved");
 	}
 	public void loadAccount()
 	{
-		
+		String accountName = "";
+		System.out.println("====================");
+		System.out.println("Loading Account");
+		System.out.println("====================");
+		File f = new File(BB_FileStorage.defaultDirectory);
+		if(f.exists())
+		{
+			if(f.isDirectory())
+			{
+				System.out.println("Current Accounts:");
+				for(File df : f.listFiles())
+				{
+					System.out.println(df.getName());
+				}
+			}
+		}
+		System.out.print("Enter the name of the account: ");
+		accountName = sc.nextLine();
+		account = BB_FileStorage.loadAccount(accountName);
+		System.out.print("Account " + accountName + " loaded.");
 	}
 	public void newAccount()
 	{
+		String accountName = "";
+		System.out.println("====================");
+		System.out.println("New Account");
+		System.out.println("====================");
+		System.out.print("Enter the name of the account: ");
+		accountName = sc.nextLine();
+		account = new BB_Account();
+		account.name(accountName);
 	
 	}
-	public int getInt(int min, int max, Scanner sc)
+	
+	public void viewPandC()
+	{
+		for(BB_Profile p : account.profiles())
+		{
+			System.out.println("Profile: " + p.name());
+		}
+		for(BB_Category p : account.categories())
+		{
+			System.out.println("Category: " + p.name());
+		}
+	}
+
+	public int getInt(int min, int max)
 	{
 		boolean inputCorrect = false;
 		int inputInt = 0;
@@ -442,13 +556,31 @@ public class BB_ConsoleApplication {
 				System.out.println("Please enter an integer between " + min + " and " + max + ".");
 		}
 		return inputInt;
+	}	
+	public int getInt()
+	{
+		boolean inputCorrect = false;
+		int inputInt = 0;
+		while(!inputCorrect)
+		{
+			try{
+				inputInt = sc.nextInt();
+				sc.nextLine();
+				inputCorrect = true;
+			}catch(Exception e){ System.out.println("Please enter a valid integer");}
+		}
+		return inputInt;
 	}
-	public double getDouble(Scanner sc)
+	public double getDouble()
 	{
 		while(true)
 		{
 			if(sc.hasNextDouble())
-				return sc.nextDouble();
+			{
+				double d = sc.nextDouble();
+				sc.nextLine();
+				return d;
+			}
 			else
 			{
 				sc.nextLine();

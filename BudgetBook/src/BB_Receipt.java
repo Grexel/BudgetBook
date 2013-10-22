@@ -23,7 +23,7 @@ public class BB_Receipt
 		receiptNumber(num);
 		name(name);
 		date(date);
-		listOfItems(new ArrayList<BB_Item>());
+		listOfItems(list);
 		tax(tax);
 	}
 
@@ -31,7 +31,9 @@ public class BB_Receipt
 	{
 		double total = tax();
 		for(BB_Item item : listOfItems())
+		{
 			total += item.numberOfItems() * item.costPerEach();
+		}
 		return total;
 	}
 	public void addItem(BB_Item item)
