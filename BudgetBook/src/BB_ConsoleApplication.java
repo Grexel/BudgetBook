@@ -4,6 +4,7 @@ public class BB_ConsoleApplication {
 
 	private Scanner sc;
 	private BB_Account account;
+	boolean quit = false;
 	public static void main(String[] args)
 	{
 		BB_ConsoleApplication mainProgram = new BB_ConsoleApplication();
@@ -18,55 +19,13 @@ public class BB_ConsoleApplication {
 	}
 	public void run()
 	{
-		boolean quit = false;
 		while(!quit)
 		{
 			showMainMenu();
-			int choice = getInt(1,12,sc);
-			switch(choice)
-			{
-				case 1:
-					viewMonthlyAccount();
-					break;
-				case 2:
-					showAddSectionMenu();
-					addSection();
-					break;
-				case 3:
-					showAddPayMenu();
-					addPay();
-					break;
-				case 4:
-					showEditSectionMenu();
-					break;
-				case 5:
-					showEditPayMenu();
-					break;
-				case 6:
-					//addItemToCategory(sc);
-					break;
-				case 7:
-					//loadLedger(sc);
-					break;
-				case 8:
-					//saveLedger();
-					break;
-				case 9:
-					quit = true;
-					break;
-				case 10:
-					//
-					break;
-				case 11:
-					//
-					break;
-				default:
-					break;
-			}
+			mainMenu();
 			System.out.println("\nPress Enter to continue");
 			sc.nextLine();
 		}
-		
 	}
 	
 	public void showMainMenu()
@@ -86,6 +45,50 @@ public class BB_ConsoleApplication {
 		 view month/timespan, whole or d/u/i/s, based on profile/category/name
 		 
 		 */
+	}
+	public void mainMenu()
+	{
+		int choice = getInt(1,12,sc);
+		switch(choice)
+		{
+			case 1:
+				viewMonthlyAccount();
+				break;
+			case 2:
+				showAddSectionMenu();
+				addSection();
+				break;
+			case 3:
+				showAddPayMenu();
+				addPay();
+				break;
+			case 4:
+				showEditSectionMenu();
+				break;
+			case 5:
+				showEditPayMenu();
+				break;
+			case 6:
+				saveAccount();
+				break;
+			case 7:
+				loadAccount();
+				break;
+			case 8:
+				newAccount();
+				break;
+			case 9:
+				quit = true;
+				break;
+			case 10:
+				//
+				break;
+			case 11:
+				//
+				break;
+			default:
+				break;
+		}
 	}
 	public void showAddSectionMenu()
 	{
@@ -413,6 +416,18 @@ public class BB_ConsoleApplication {
 		//insert items into the receipt
 	}	
 	
+	public void saveAccount()
+	{
+		
+	}
+	public void loadAccount()
+	{
+		
+	}
+	public void newAccount()
+	{
+	
+	}
 	public int getInt(int min, int max, Scanner sc)
 	{
 		boolean inputCorrect = false;

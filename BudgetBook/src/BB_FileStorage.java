@@ -195,10 +195,67 @@ public class BB_FileStorage {
 							+ p.name() + ":"
 							+ p.numberOfItems() + ":"
 							+ p.costPerEach() + ":"
-							+ dateFormat.format(p.date())
-							+ p.attributedTo().name()
+							+ dateFormat.format(p.date() + ":")
+							+ p.attributedTo().name() + ":"
 							+ p.category().name());
 					bw.newLine();
+				}
+			}
+			for(BB_Utility debt : account.utilities())
+			{
+				for(BB_Item p : debt.listOfPayments())
+				{
+					bw.write("UP:" + debt.name() + ":" + p.itemNumber() + ":"
+							+ p.name() + ":"
+							+ p.numberOfItems() + ":"
+							+ p.costPerEach() + ":"
+							+ dateFormat.format(p.date() + ":")
+							+ p.attributedTo().name() + ":"
+							+ p.category().name());
+					bw.newLine();
+				}
+			}
+			for(BB_Earning debt : account.income())
+			{
+				for(BB_Item p : debt.listOfPayments())
+				{
+					bw.write("IE:" + debt.name() + ":" + p.itemNumber() + ":"
+							+ p.name() + ":"
+							+ p.numberOfItems() + ":"
+							+ p.costPerEach() + ":"
+							+ dateFormat.format(p.date() + ":")
+							+ p.attributedTo().name() + ":"
+							+ p.category().name());
+					bw.newLine();
+				}
+			}
+			for(BB_Disposable debt : account.spendingTabs())
+			{
+				for(BB_Receipt p : debt.listOfPayments())
+				{
+					bw.write("DR:" + debt.name() + ":" + p.receiptNumber() + ":"
+							+ p.name() + ":"
+							+ dateFormat.format(p.date()) + ":"
+							+ p.tax());
+					bw.newLine();
+				}
+			}
+			for(BB_Disposable debt : account.spendingTabs())
+			{
+				for(BB_Receipt p : debt.listOfPayments())
+				{
+					for(BB_Item item : p.listOfItems())
+					{
+						bw.write("DRI:" + debt.name() + ":" + p.receiptNumber() + ":"
+								+ item.itemNumber() + ":"
+								+ item.name() + ":"
+								+ item.numberOfItems() + ":"
+								+ item.costPerEach() + ":"
+								+ dateFormat.format(item.date() + ":")
+								+ item.attributedTo().name() + ":"
+								+ item.category().name());
+						bw.newLine();
+					}
 				}
 			}
 		}catch(IOException e){e.printStackTrace();}
