@@ -214,30 +214,40 @@ public class BB_ConsoleApplication {
 		System.out.println("Utilities:");
 		for(BB_Utility utility : account.utilities())
 		{
+			System.out.println("  " + utility.name() + "  avg: " + utility.averagePayment());
 			for(BB_Item payment : utility.getPayment(new Date()))
 			{
-				System.out.println("  " + payment.name() + " " + payment.costPerEach());
+				System.out.println("    " + payment.name() + " " + payment.costPerEach());
 				monthlyPayments += payment.costPerEach();
 			}
-				System.out.println("   average: " + utility.averagePayment());
 		}
 		System.out.println("Income:");
 		for(BB_Earning income : account.income())
 		{
-			System.out.println("  " + income.name() + ":");
+			double totalIncome = 0;
 			for(BB_Item payment : income.getEarnings(new Date()))
 			{
-				System.out.println("  " + payment.name() + " " + payment.costPerEach());
+				totalIncome += payment.costPerEach();
+			}
+			System.out.println("  " + income.name() + ": " + totalIncome);
+			for(BB_Item payment : income.getEarnings(new Date()))
+			{
+				System.out.println("    " + payment.name() + " " + payment.costPerEach());
 				monthlyEarnings += payment.costPerEach();
 			}
 		}
 		System.out.println("Disposable Income:");
 		for(BB_Disposable dispose : account.spendingTabs())
 		{
-			System.out.println("  " + dispose.name() + ":");
+			double totalDisp = 0;
 			for(BB_Receipt receipt : dispose.getReceipts(new Date()))
 			{
-				System.out.println(" $" + receipt.name() + " " + receipt.total());
+				totalDisp += receipt.total();
+			}
+			System.out.println("  " + dispose.name() + ": " + totalDisp);
+			for(BB_Receipt receipt : dispose.getReceipts(new Date()))
+			{
+				System.out.println("   $" + receipt.name() + " " + receipt.total());
 				monthlyPayments += receipt.total();
 			}
 		}
