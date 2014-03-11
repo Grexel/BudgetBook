@@ -1,0 +1,325 @@
+Name:MillerFamily:0.0:266:94
+Debt:Mortgage:118883.03:118883.03:701.57:187.57:359.69
+Debt:JeffSallieMae:3638.3:3638.3:55.27:46.1:9.17
+Debt:Lowes:1028.75:1028.75:25.0:25.0:0.0
+Debt:JeffAES:11065.22:11065.22:99.9:70.42:29.48
+Debt:JeffFedLoan:19674.21:19674.21:218.9:146.81:72.09
+Debt:Honda:2777.17:2777.17:140.07:137.84:2.26
+Debt:AmyAES:6500.0:6500.0:173.7:133.92:39.78
+Utility:BRC
+Utility:UGI
+Utility:Penelec
+Utility:TroyWater
+Utility:H&H
+Utility:Netflix
+Utility:HuluPlus
+Utility:VerizonPhone
+Utility:Geico
+Income:AmyWork
+Income:JeffParents
+Disposable:Family
+Disposable:Amy
+Disposable:Jeff
+Profile:Default
+Profile:Family
+Profile:Amy
+Profile:Jeff
+Profile:Jasper
+Profile:Petra
+Profile:Kids
+Profile:Adults
+Profile:Other
+Category:Default
+Category:Car
+Category:Groceries
+Category:Food
+Category:Snacks
+Category:Toiletries
+Category:Clothing
+Category:Dining
+Category:Entertainment
+Category:Medical
+Category:Toys
+Category:Education
+Category:Gift
+Category:Housing
+DP:Mortgage:9:Mortgage_Payment:1:701.57:10/23/2013:Default:Default
+DP:Mortgage:226:Mortgage_Payment:1:701.57:11/05/2013:Default:Default
+DP:JeffSallieMae:62:JeffSallieMae_Payment:1:55.27:10/23/2013:Default:Default
+DP:Lowes:70:Lowes_Payment:1:25.0:10/23/2013:Default:Default
+DP:JeffAES:69:JeffAES_Payment:1:99.9:10/23/2013:Default:Default
+DP:Honda:162:Honda_Payment:1:140.07:10/24/2013:Default:Default
+DP:AmyAES:18:AmyAES_Payment:1:173.7:10/23/2013:Default:Default
+UP:BRC:130:BRC_Payment:1:56.21:10/23/2013:Default:Default
+UP:UGI:129:UGI_Payment:1:51.6:10/23/2013:Default:Default
+UP:Penelec:64:Penelec_Payment:1:65.54:10/23/2013:Default:Default
+UP:TroyWater:68:TroyWater_Payment:1:46.87:10/23/2013:Default:Default
+UP:H&H:16:H&H_Payment:1:25.0:10/23/2013:Default:Default
+UP:H&H:125:H&H_Payment:1:25.0:10/23/2013:Default:Default
+UP:H&H:128:H&H_Payment:1:25.0:10/23/2013:Default:Default
+UP:H&H:165:H&H_Payment:1:25.0:10/26/2013:Default:Default
+UP:H&H:223:H&H_Payment:1:25.0:10/29/2013:Default:Default
+UP:Netflix:78:Netflix_Payment:1:7.99:10/23/2013:Default:Default
+UP:HuluPlus:79:HuluPlus_Payment:1:7.99:10/23/2013:Default:Default
+UP:VerizonPhone:182:VerizonPhone_Payment:1:111.07:10/26/2013:Default:Default
+UP:Geico:23:Geico_Payment:1:118.79:10/23/2013:Default:Default
+UP:Geico:263:Geico_Payment:1:118.79:11/05/2013:Default:Default
+IE:AmyWork:14:AmyWork_Payment:1:1158.71:10/23/2013:Default:Default
+IE:AmyWork:126:AmyWork_Payment:1:1158.71:10/23/2013:Default:Default
+IE:AmyWork:224:AmyWork_Payment:1:1158.71:10/31/2013:Default:Default
+IE:AmyWork:225:AmyWork_Payment:1:0.48:10/31/2013:Default:Default
+IE:JeffParents:163:JeffParents_Payment:1:1000.0:10/24/2013:Default:Default
+DR:Family:7:TroyDandy:10/23/2013:0.0
+DR:Family:16:TroyDandy:10/23/2013:0.0
+DR:Family:20:FamilyDollar:10/23/2013:0.0
+DR:Family:22:LeapFrog:10/23/2013:0.0
+DR:Family:24:Wegmans:10/23/2013:0.36
+DR:Family:26:SheetzWilliamsport:10/23/2013:0.0
+DR:Family:27:TroyDandy:10/23/2013:0.0
+DR:Family:29:Peebles:10/23/2013:0.0
+DR:Family:31:DunkinSunbury:10/23/2013:0.14
+DR:Family:39:Tops:10/23/2013:0.0
+DR:Family:41:FamilyDollar:10/23/2013:0.0
+DR:Family:42:McDonalds:10/23/2013:0.56
+DR:Family:48:WegmansMeal:10/23/2013:0.5
+DR:Family:50:Wegmans:10/23/2013:0.59
+DR:Family:52:FamilyDollar:10/23/2013:0.35
+DR:Family:54:TroyDandy:10/23/2013:0.0
+DR:Family:56:FamilyDollar:10/23/2013:0.0
+DR:Family:58:SamsClub:10/24/2013:6.1
+DR:Family:60:SamsClub:10/24/2013:1.6
+DR:Family:62:Wegmans:10/24/2013:0.0
+DR:Family:63:TroyDandy:10/24/2013:0.0
+DR:Family:67:Wegmans:10/26/2013:0.0
+DR:Family:69:Michaels:10/26/2013:0.0
+DR:Family:70:Ulta:10/26/2013:0.54
+DR:Family:79:Sheetz Williamsport:10/26/2013:0.0
+DR:Family:80:Tops Troy:10/26/2013:0.0
+DR:Family:82:Wegmans:10/29/2013:0.59
+DR:Family:83:Tops:10/29/2013:0.0
+DR:Family:84:KMart Towanda:10/29/2013:2.55
+DR:Family:86:Wendys Towanda:10/29/2013:0.0
+DR:Family:87:Walmart:10/29/2013:0.36
+DR:Family:88:Wegmans:11/05/2013:0.14
+DR:Family:89:Dandy:11/05/2013:0.0
+DR:Family:90:Tops:11/05/2013:0.0
+DR:Family:91:Tops:11/05/2013:0.0
+DR:Family:92:Amazon:11/05/2013:0.0
+DR:Family:93:Dandy:11/05/2013:0.0
+DR:Amy:10:WegmansWilliamsport:10/23/2013:0.0
+DR:Amy:12:DunkinSunbury:10/23/2013:0.0
+DR:Amy:25:Docs Irish Inn:10/23/2013:0.0
+DR:Amy:36:NYC Bustrip:10/23/2013:0.0
+DR:Amy:45:GapNYUS:10/23/2013:1.68
+DR:Amy:46:BassShoesNYUS:10/23/2013:1.26
+DR:Amy:47:AmazonSeattleWaus:10/23/2013:0.0
+DR:Amy:65:Wegmans:10/26/2013:0.6
+DR:Amy:72:NWS BCF LycomingMall:10/26/2013:0.0
+DR:Amy:73:Macys LycomingMall:10/26/2013:1.02
+DR:Amy:74:SY8 A & E LycomingMall:10/26/2013:0.0
+DR:Amy:76:Gap USA Muncy:10/26/2013:0.0
+DR:Amy:78:Shoe Dept Pennsdale:10/26/2013:0.0
+DR:Amy:85:Docs Irish Inn:10/29/2013:0.0
+DR:Jeff:33:DollarGeneral:10/23/2013:0.35
+DR:Jeff:57:HooverHardware:10/23/2013:1.28
+DR:Jeff:81:Spaghetti Supper:10/26/2013:0.0
+DRI:Family:7:7:Gas:1:26.99:10/23/2013:Default:Default
+DRI:Family:16:20:Gas:1:32.18:10/23/2013:Default:Default
+DRI:Family:20:25:Milk:1:3.8:10/23/2013:Default:Default
+DRI:Family:22:27:Cha Cha Chicken:1:5.3:10/23/2013:Default:Default
+DRI:Family:24:29:Yogurt:4:0.45:10/23/2013:Default:Default
+DRI:Family:24:30:Ice Cream:1:2.99:10/23/2013:Default:Default
+DRI:Family:24:31:Peas:2:2.39:10/23/2013:Default:Default
+DRI:Family:24:32:Green Beans:1:2.39:10/23/2013:Default:Default
+DRI:Family:24:33:Pasta:1:2.49:10/23/2013:Default:Default
+DRI:Family:24:34:Fabric Softener:1:4.49:10/23/2013:Default:Default
+DRI:Family:24:35:Ketchup:1:2.99:10/23/2013:Default:Default
+DRI:Family:24:36:Flour:1:2.99:10/23/2013:Default:Default
+DRI:Family:24:37:Brown Sugar:2:0.99:10/23/2013:Default:Default
+DRI:Family:24:38:Peanut Butter:1:6.49:10/23/2013:Default:Default
+DRI:Family:24:39:Baby Pouch:5:1.29:10/23/2013:Default:Default
+DRI:Family:24:40:Baby Pouch:1:1.39:10/23/2013:Default:Default
+DRI:Family:24:41:Potatoes:1:1.99:10/23/2013:Default:Default
+DRI:Family:24:42:Baby Spinach:1:3.99:10/23/2013:Default:Default
+DRI:Family:24:43:Cucumber:2:2.99:10/23/2013:Default:Default
+DRI:Family:24:44:Pineapple:1:5.99:10/23/2013:Default:Default
+DRI:Family:24:45:Plums:1:1.98:10/23/2013:Default:Default
+DRI:Family:24:46:Strawberries:1:4.99:10/23/2013:Default:Default
+DRI:Family:24:47:Tomatoes:1:3.99:10/23/2013:Default:Default
+DRI:Family:24:48:Bananas:1:1.76:10/23/2013:Default:Default
+DRI:Family:24:49:Chia Seeds:1:6.33:10/23/2013:Default:Default
+DRI:Family:26:51:Gas:1:20.87:10/23/2013:Default:Default
+DRI:Family:27:52:Food:1:5.69:10/23/2013:Default:Default
+DRI:Family:29:54:Shoes:1:40.03:10/23/2013:Default:Default
+DRI:Family:31:56:Donuts:1:3.0:10/23/2013:Default:Default
+DRI:Family:31:57:Coffee:1:2.29:10/23/2013:Default:Default
+DRI:Family:39:72:Tater Patties:1:3.29:10/23/2013:Default:Default
+DRI:Family:39:73:Hashbrowns:1:2.29:10/23/2013:Default:Default
+DRI:Family:41:75:Stuff:1:11.66:10/23/2013:Default:Default
+DRI:Family:42:76:Dessert:1:9.25:10/23/2013:Default:Default
+DRI:Family:48:84:Bottled Water:1:1.34:10/23/2013:Default:Default
+DRI:Family:48:85:Vege Meal:1:4.99:10/23/2013:Default:Default
+DRI:Family:48:86:Kids Sub Meal:1:4.99:10/23/2013:Default:Default
+DRI:Family:48:87:BBQ Chips:1:0.99:10/23/2013:Default:Default
+DRI:Family:50:89:Garlic Hummus:1:1.99:10/23/2013:Default:Default
+DRI:Family:50:90:Yogurt:7:0.45:10/23/2013:Default:Default
+DRI:Family:50:91:Sour Cream:1:1.59:10/23/2013:Default:Default
+DRI:Family:50:92:Colby Jack Cheese:1:2.29:10/23/2013:Default:Default
+DRI:Family:50:93:Wrap:1:3.79:10/23/2013:Default:Default
+DRI:Family:50:94:Wrap:1:2.69:10/23/2013:Default:Default
+DRI:Family:50:95:Green Beans:1:2.39:10/23/2013:Default:Default
+DRI:Family:50:96:Peas:1:2.39:10/23/2013:Default:Default
+DRI:Family:50:97:Ice Cream:2:2.99:10/23/2013:Default:Default
+DRI:Family:50:98:Baby Pouch:4:1.29:10/23/2013:Default:Default
+DRI:Family:50:99:Baby Pouch:3:1.39:10/23/2013:Default:Default
+DRI:Family:50:100:Pasta:1:2.49:10/23/2013:Default:Default
+DRI:Family:50:101:Pasta:2:1.29:10/23/2013:Default:Default
+DRI:Family:50:102:Pita Chips:4:2.5:10/23/2013:Default:Default
+DRI:Family:50:103:Clorox Wand:1:3.99:10/23/2013:Default:Default
+DRI:Family:50:104:Body Wash:2:1.5:10/23/2013:Default:Default
+DRI:Family:50:105:Potatoes:1:1.99:10/23/2013:Default:Default
+DRI:Family:50:106:Carrots:2:4.49:10/23/2013:Default:Default
+DRI:Family:50:107:Green Beans:1:5.99:10/23/2013:Default:Default
+DRI:Family:50:108:Apples:1:4.69:10/23/2013:Default:Default
+DRI:Family:50:109:Yams:1:2.99:10/23/2013:Default:Default
+DRI:Family:50:110:Tomatoes:1:3.99:10/23/2013:Default:Default
+DRI:Family:50:111:Strawberries:1:4.99:10/23/2013:Default:Default
+DRI:Family:50:112:Spinach:1:3.99:10/23/2013:Default:Default
+DRI:Family:50:113:Pineapple:2:5.99:10/23/2013:Default:Default
+DRI:Family:50:114:Oranges:1:3.99:10/23/2013:Default:Default
+DRI:Family:50:115:Squash:1:3.16:10/23/2013:Default:Default
+DRI:Family:50:116:Cucumber:1:3.98:10/23/2013:Default:Default
+DRI:Family:50:117:Bananas:1:1.45:10/23/2013:Default:Default
+DRI:Family:52:119:Pickles:1:1.75:10/23/2013:Default:Default
+DRI:Family:52:120:Gourmet:2:2.0:10/23/2013:Default:Default
+DRI:Family:52:121:Gummy Egg:1:1.0:10/23/2013:Default:Default
+DRI:Family:52:122:Sippy Cup:1:2.75:10/23/2013:Default:Default
+DRI:Family:52:123:ChapStick:3:1.0:10/23/2013:Default:Default
+DRI:Family:54:127:Gas:1:28.9:10/23/2013:Default:Default
+DRI:Family:56:132:Milk:2:3.04:10/23/2013:Default:Default
+DRI:Family:58:135:SamsMembership:1:45.0:10/24/2013:Default:Default
+DRI:Family:58:136:Diapers:1:39.98:10/24/2013:Default:Default
+DRI:Family:58:137:BabyClothes:3:7.48:10/24/2013:Default:Default
+DRI:Family:60:139:DiaperGenie:1:19.98:10/24/2013:Default:Default
+DRI:Family:62:141:Tofu:1:1.79:10/24/2013:Default:Default
+DRI:Family:62:142:Sour Cream:1:1.59:10/24/2013:Default:Default
+DRI:Family:62:143:Peas:1:2.39:10/24/2013:Default:Default
+DRI:Family:62:144:Ice Cream:1:2.99:10/24/2013:Default:Default
+DRI:Family:62:145:Fruit Leather:4:0.49:10/24/2013:Default:Default
+DRI:Family:62:146:Baby Pouch:5:1.39:10/24/2013:Default:Default
+DRI:Family:62:147:Baby Pouch:3:1.29:10/24/2013:Default:Default
+DRI:Family:62:148:Seasoned Salt:1:1.99:10/24/2013:Default:Default
+DRI:Family:62:149:Adobo Seasoning:1:1.59:10/24/2013:Default:Default
+DRI:Family:62:150:Peanut Butter:1:3.99:10/24/2013:Default:Default
+DRI:Family:62:151:Olive Oil:1:5.79:10/24/2013:Default:Default
+DRI:Family:62:152:Waffle Mix:1:3.99:10/24/2013:Default:Default
+DRI:Family:62:153:Bananas:1:1.79:10/24/2013:Default:Default
+DRI:Family:62:154:Green Beans:1:3.99:10/24/2013:Default:Default
+DRI:Family:62:155:Strawberries:1:4.99:10/24/2013:Default:Default
+DRI:Family:62:156:Spinach:1:3.99:10/24/2013:Default:Default
+DRI:Family:62:157:Tomatoes:1:3.99:10/24/2013:Default:Default
+DRI:Family:62:158:Grapes:1:5.99:10/24/2013:Default:Default
+DRI:Family:62:159:Pineapple:1:5.99:10/24/2013:Default:Default
+DRI:Family:62:160:Baby Corn:1:2.5:10/24/2013:Default:Default
+DRI:Family:62:161:Asparagus:1:2.5:10/24/2013:Default:Default
+DRI:Family:63:164:Gas:1:20.98:10/24/2013:Default:Default
+DRI:Family:67:170:Pita Chips:2:2.5:10/26/2013:Default:Default
+DRI:Family:67:171:Cheese Curds:1:3.29:10/26/2013:Default:Default
+DRI:Family:67:172:Olive Bar:1:2.08:10/26/2013:Default:Default
+DRI:Family:67:173:Tzatziki:1:3.99:10/26/2013:Default:Default
+DRI:Family:69:175:Paint:1:13.99:10/26/2013:Default:Default
+DRI:Family:70:176:Eyeliner:3:3.0:10/26/2013:Default:Default
+DRI:Family:79:186:Gas:1:29.38:10/26/2013:Default:Default
+DRI:Family:80:187:Milk:1:3.77:10/26/2013:Default:Default
+DRI:Family:82:189:Tofu:1:1.79:10/29/2013:Default:Default
+DRI:Family:82:190:Eggs:1:0.85:10/29/2013:Default:Default
+DRI:Family:82:191:Butter:1:2.49:10/29/2013:Default:Default
+DRI:Family:82:192:Yogurt:5:0.45:10/29/2013:Default:Default
+DRI:Family:82:193:Peas:1:2.39:10/29/2013:Default:Default
+DRI:Family:82:194:Vanilla:1:3.79:10/29/2013:Default:Default
+DRI:Family:82:195:Baby Pouch:3:1.29:10/29/2013:Default:Default
+DRI:Family:82:196:Baby Pouch:1:1.39:10/29/2013:Default:Default
+DRI:Family:82:197:Baby Pouch:4:1.59:10/29/2013:Default:Default
+DRI:Family:82:198:Pita Chips:2:2.5:10/29/2013:Default:Default
+DRI:Family:82:199:Gift Card:1:5.49:10/29/2013:Default:Default
+DRI:Family:82:200:Gift Bag:1:1.89:10/29/2013:Default:Default
+DRI:Family:82:201:Carrots:1:4.49:10/29/2013:Default:Default
+DRI:Family:82:202:Potatoes:1:1.99:10/29/2013:Default:Default
+DRI:Family:82:203:Cucumber:1:5.97:10/29/2013:Default:Default
+DRI:Family:82:204:Squash:1:3.34:10/29/2013:Default:Default
+DRI:Family:82:205:Apples:1:4.69:10/29/2013:Default:Default
+DRI:Family:82:206:Bananas:1:1.55:10/29/2013:Default:Default
+DRI:Family:82:207:Tomatoes:1:3.99:10/29/2013:Default:Default
+DRI:Family:82:208:Spinach:1:3.99:10/29/2013:Default:Default
+DRI:Family:82:209:Pineapple:2:2.5:10/29/2013:Default:Default
+DRI:Family:82:210:Strawberries:1:4.99:10/29/2013:Default:Default
+DRI:Family:82:211:Coupon:1:-1.0:10/29/2013:Default:Default
+DRI:Family:83:212:Dessert:1:7.28:10/29/2013:Default:Default
+DRI:Family:84:213:Lady Bug Costume:1:12.49:10/29/2013:Default:Default
+DRI:Family:84:214:Mario Costume:1:29.99:10/29/2013:Default:Default
+DRI:Family:86:216:Food:1:14.41:10/29/2013:Default:Default
+DRI:Family:87:217:Milk:1:3.77:10/29/2013:Default:Default
+DRI:Family:87:218:Baby Wipes:1:8.97:10/29/2013:Default:Default
+DRI:Family:87:219:Bowl:1:2.98:10/29/2013:Default:Default
+DRI:Family:87:220:Gloves:2:1.5:10/29/2013:Default:Default
+DRI:Family:87:221:Hat:1:5.0:10/29/2013:Default:Default
+DRI:Family:87:222:Bag:1:3.0:10/29/2013:Default:Default
+DRI:Family:88:227:Cheddar Cheese:1:2.29:11/05/2013:Family:Food
+DRI:Family:88:228:Mozzarela Cheese:1:2.29:11/05/2013:Amy:Food
+DRI:Family:88:229:Hummus:2:1.99:11/05/2013:Family:Food
+DRI:Family:88:230:Parmesan Cheese:1:5.29:11/05/2013:Family:Food
+DRI:Family:88:231:Yogurt:10:0.45:11/05/2013:Kids:Food
+DRI:Family:88:232:Ice Cream:1:2.99:11/05/2013:Family:Food
+DRI:Family:88:233:Broccoli:1:0.99:11/05/2013:Family:Food
+DRI:Family:88:234:Peas:2:2.39:11/05/2013:Family:Food
+DRI:Family:88:235:Spinach:1:0.99:11/05/2013:Family:Food
+DRI:Family:88:236:Green Beans:1:2.39:11/05/2013:Family:Food
+DRI:Family:88:237:Cereal:1:1.99:11/05/2013:Kids:Food
+DRI:Family:88:238:Pasta:1:2.49:11/05/2013:Family:Food
+DRI:Family:88:239:Flour:1:2.99:11/05/2013:Family:Food
+DRI:Family:88:240:Flour:1:0.99:11/05/2013:Family:Food
+DRI:Family:88:241:Graham Crackers:1:3.49:11/05/2013:Kids:Food
+DRI:Family:88:242:Tomato Paste:1:0.99:11/05/2013:Amy:Food
+DRI:Family:88:243:Pineapple:1:0.99:11/05/2013:Amy:Food
+DRI:Family:88:244:Bulgur Wheat:1:2.19:11/05/2013:Family:Food
+DRI:Family:88:245:Lightbulbs:1:1.79:11/05/2013:Family:Default
+DRI:Family:88:246:Squash:1:4.72:11/05/2013:Amy:Food
+DRI:Family:88:247:Yams:1:3.49:11/05/2013:Family:Food
+DRI:Family:88:248:Potatoes:1:1.99:11/05/2013:Family:Food
+DRI:Family:88:249:Carrots:1:4.49:11/05/2013:Family:Food
+DRI:Family:88:250:Pomegranate:1:2.5:11/05/2013:Jeff:Food
+DRI:Family:88:251:Bananas:1:1.64:11/05/2013:Jasper:Food
+DRI:Family:88:252:Celery:1:2.49:11/05/2013:Family:Food
+DRI:Family:88:253:Cucumber:1:3.98:11/05/2013:Amy:Food
+DRI:Family:88:254:Grapes:1:5.99:11/05/2013:Kids:Food
+DRI:Family:88:255:Tomatoes:1:3.99:11/05/2013:Amy:Food
+DRI:Family:88:256:Spinach:1:3.99:11/05/2013:Amy:Food
+DRI:Family:88:257:Strawberries:1:4.99:11/05/2013:Jasper:Food
+DRI:Family:89:258:Gas:1:31.13:11/05/2013:Family:Car
+DRI:Family:90:259:Milk:1:4.15:11/05/2013:Petra:Food
+DRI:Family:91:260:Mushrooms:1:2.29:11/05/2013:Amy:Food
+DRI:Family:91:261:Minced Garlic:2:1.0:11/05/2013:Amy:Food
+DRI:Family:92:262:Bed Sheets:1:30.91:11/05/2013:Adults:Housing
+DRI:Family:93:264:Milk:1:3.89:11/05/2013:Petra:Food
+DRI:Family:93:265:Garbage Tags:1:30.0:11/05/2013:Family:Housing
+DRI:Amy:10:11:Food:1:11.44:10/23/2013:Default:Default
+DRI:Amy:12:13:Food:1:3.71:10/23/2013:Default:Default
+DRI:Amy:25:50:Food:1:25.54:10/23/2013:Default:Default
+DRI:Amy:36:66:Bus Tickets:2:40.0:10/23/2013:Default:Default
+DRI:Amy:45:81:Clothes:1:41.99:10/23/2013:Default:Default
+DRI:Amy:46:82:Shoes:1:31.6:10/23/2013:Default:Default
+DRI:Amy:47:83:PinBacks:1:53.22:10/23/2013:Default:Default
+DRI:Amy:65:167:Bottled Water:1:1.5:10/26/2013:Default:Default
+DRI:Amy:65:168:Asian Bar:1:10.1:10/26/2013:Default:Default
+DRI:Amy:72:178:Stuff:1:12.99:10/26/2013:Default:Default
+DRI:Amy:73:179:Clinique:1:17.0:10/26/2013:Default:Default
+DRI:Amy:74:180:Stuff:1:9.99:10/26/2013:Default:Default
+DRI:Amy:76:183:Stuff:1:8.38:10/26/2013:Default:Default
+DRI:Amy:78:185:Stuff:1:19.98:10/26/2013:Default:Default
+DRI:Amy:85:215:Food:1:30.48:10/29/2013:Default:Default
+DRI:Jeff:33:59:Graph Paper:1:1.75:10/23/2013:Default:Default
+DRI:Jeff:33:60:Doll:1:1.0:10/23/2013:Default:Default
+DRI:Jeff:33:61:Tank:1:3.0:10/23/2013:Default:Default
+DRI:Jeff:57:133:Wiffle Ball Bat:1:5.29:10/23/2013:Default:Default
+DRI:Jeff:57:134:Batting Tee:1:15.99:10/23/2013:Default:Default
+DRI:Jeff:81:188:Donation:1:15.0:10/26/2013:Default:Default
