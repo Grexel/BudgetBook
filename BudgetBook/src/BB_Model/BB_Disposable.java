@@ -45,7 +45,7 @@ public class BB_Disposable
 		Calendar startDate = new GregorianCalendar();
 		startDate.setTime(start);
 		Calendar endDate = new GregorianCalendar();
-		startDate.setTime(end);
+		endDate.setTime(end);
 		Calendar paymentDate = new GregorianCalendar();
 		
 		for(BB_Receipt payment : listOfPayments())

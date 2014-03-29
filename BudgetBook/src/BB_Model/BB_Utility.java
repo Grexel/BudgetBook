@@ -50,7 +50,7 @@ public class BB_Utility
 		Calendar startDate = new GregorianCalendar();
 		startDate.setTime(start);
 		Calendar endDate = new GregorianCalendar();
-		startDate.setTime(end);
+		endDate.setTime(end);
 		Calendar paymentDate = new GregorianCalendar();
 		
 		for(BB_Item payment : listOfPayments())

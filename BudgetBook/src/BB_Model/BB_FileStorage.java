@@ -36,6 +36,9 @@ public class BB_FileStorage {
 					account.balance(Double.parseDouble(commands[2]));
 					account.nextItemNumber(Integer.parseInt(commands[3]));
 					account.nextReceiptNumber(Integer.parseInt(commands[4]));
+					try{
+						account.dateCreated(dateFormat.parse(commands[5]));
+					}catch(Exception e){}
 				}
 				else if(commands[0].equals("Debt"))
 				{
@@ -44,7 +47,8 @@ public class BB_FileStorage {
 							Double.parseDouble(commands[3]),
 							Double.parseDouble(commands[4]),
 							Double.parseDouble(commands[5]),
-							Double.parseDouble(commands[6]));
+							Double.parseDouble(commands[6]),
+							Boolean.parseBoolean(commands[7]));
 					account.addDebt(debt);
 //public BB_Debt(String name, double intBal, double curBal, double payment, double princePay, double intPay)
 					
@@ -175,11 +179,13 @@ public class BB_FileStorage {
 			bw.write("Name:" + account.name() + ":" +
 					account.balance() + ":" +
 					account.currentItemNumber() + ":" +
-					account.currentReceiptNumber()); bw.newLine();
+					account.currentReceiptNumber() + ":" +
+					dateFormat.format(account.dateCreated())); bw.newLine();
 			for(BB_Debt debt : account.debts())
 			{
 				bw.write("Debt:" + debt.name() + ":" + debt.initialBalance() + ":" + debt.currentBalance()
-						+ ":" + debt.payment() + ":" + debt.principalPayment() + ":" + debt.interestPayment());
+						+ ":" + debt.payment() + ":" + debt.principalPayment() + ":" + debt.interestPayment()
+						+ ":" + debt.isClosed());
 				bw.newLine();
 			}
 			for(BB_Utility util : account.utilities())

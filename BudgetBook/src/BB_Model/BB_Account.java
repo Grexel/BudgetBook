@@ -6,7 +6,8 @@ public class BB_Account
 	private double _balance;
 	private int _nextItemNumber;
 	private int _nextReceiptNumber;
-
+	private Date _dateCreated;
+	
 	private ArrayList<BB_Debt> _debts;
 	private ArrayList<BB_Utility> _utilities;
 	private ArrayList<BB_Disposable> _spendingTabs;
@@ -21,6 +22,7 @@ public class BB_Account
 		balance(0);
 		nextItemNumber(0);
 		nextReceiptNumber(0);
+		dateCreated(new Date());
 		debts(new ArrayList<BB_Debt>());
 		utilities(new ArrayList<BB_Utility>());
 		spendingTabs(new ArrayList<BB_Disposable>());
@@ -38,6 +40,7 @@ public class BB_Account
 		balance(0);
 		nextItemNumber(0);
 		nextReceiptNumber(0);
+		dateCreated(new Date());
 		debts(new ArrayList<BB_Debt>());
 		utilities(new ArrayList<BB_Utility>());
 		spendingTabs(new ArrayList<BB_Disposable>());
@@ -119,6 +122,22 @@ public class BB_Account
 			}
 		}
 	}
+	public void addCustomDebtPayment(String debtName, double payment)
+	{
+		for(BB_Debt debt : debts())
+		{
+			if(debt.name().equals(debtName))
+			{
+				debt.addPayment(
+						generatePayment(debt.name() + "_Payment",1,payment));
+			}
+			else
+			{
+				//add error code
+			}
+		}
+		
+	}
 	public void addUtilityPayment(String utilName, double cost)
 	{
 		for(BB_Utility util : utilities())
@@ -158,6 +177,46 @@ public class BB_Account
 				//add error code
 			}
 		}
+	}
+	
+	public double monthlyPayments(Date d)
+	{
+		double monthlyPayments = 0;
+		
+		for(BB_Debt debt : debts())
+		{
+			for(BB_Item item : debt.getPayments(d))
+				monthlyPayments += item.costPerEach();
+		}
+		for(BB_Utility utility : utilities())
+		{
+			for(BB_Item payment : utility.getPayment(d))
+			{
+				monthlyPayments += payment.costPerEach();
+			}
+		}
+		for(BB_Disposable dispose : spendingTabs())
+		{
+			for(BB_Receipt receipt : dispose.getReceipts(d))
+			{
+				monthlyPayments += receipt.total();
+			}
+		}
+		return monthlyPayments;
+	}
+	
+	public double monthlyEarnings(Date d)
+	{
+		double monthlyEarnings = 0;
+		
+		for(BB_Earning income : income())
+		{
+			for(BB_Item payment : income.getEarnings(d))
+			{
+				monthlyEarnings += payment.costPerEach();
+			}
+		}
+		return monthlyEarnings;
 	}
 	
 	public BB_Receipt generateReceipt(ArrayList<BB_Item> items, String name, double tax)
@@ -262,6 +321,8 @@ public class BB_Account
 	public int currentReceiptNumber() {return _nextReceiptNumber;}
 	public int nextReceiptNumber() {return _nextReceiptNumber++;}
 	public void nextReceiptNumber(int nextReceiptNumber) {_nextReceiptNumber = nextReceiptNumber;}
+	public Date dateCreated(){ return _dateCreated;}
+	public void dateCreated(Date x){_dateCreated = x;}
 	public ArrayList<BB_Debt> debts() {return _debts;}
 	public void debts(ArrayList<BB_Debt> debts) {_debts = debts;}
 	public ArrayList<BB_Utility> utilities() {return _utilities;}
